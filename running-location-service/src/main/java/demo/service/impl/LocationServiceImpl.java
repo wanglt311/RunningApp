@@ -25,7 +25,7 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    public List<Location> saveRunningLocation(List<Location> runningLocations) {
+    public List<Location> saveRunningLocations(List<Location> runningLocations) {
         //use jpaRepository save()
         return locationRepository.save(runningLocations);
     }
@@ -42,7 +42,7 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public Page<Location> findByRunningId(String runningId, Pageable pageable) {
-        return locationRepository.findByRunningId(runningId, pageable);
+        return locationRepository.findByUnitInfoRunningId(runningId, pageable);
     }
 
 

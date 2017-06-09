@@ -44,13 +44,15 @@ public class Location {
     private RunnerMovementType runnerMovementType = RunnerMovementType.STOPPED;
     private String serviceType;
 
+    private int heartRate = 60;
+
     //class relation
     //composition
     //uniInfo multi field, cannot map in one single col
     //Embedded compose attribute into uniInfo class
     @Embedded
     @AttributeOverride(name = "bandMake", column = @Column(name = "unit_band_make"))
-    private UnitInfo unitInfo;
+    private final UnitInfo unitInfo;
 
     @Embedded
     @AttributeOverrides({
@@ -60,7 +62,7 @@ public class Location {
     private MedicalInfo medicalInfo;
 
     public Location() {
-
+        this.unitInfo = null;
     }
 
     public Location(UnitInfo unitInfo) {

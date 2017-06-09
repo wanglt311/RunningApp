@@ -12,7 +12,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 @Data
 public class UnitInfo {
-    private String runningId;
+    private final String runningId;
     private String bandMake;
     private String customerName;
     private String unitNumber;

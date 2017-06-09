@@ -9,9 +9,9 @@ import java.util.List;
 /**
  * Created by vagrant on 6/8/17.
  */
-//conveinient to get and search user info
+//convenient to get and search user info
 public interface LocationService {
-    List<Location> saveRunningLocation(List<Location> runningLocations);
+    List<Location> saveRunningLocations(List<Location> runningLocations);
 
     void deleteAll();
 
