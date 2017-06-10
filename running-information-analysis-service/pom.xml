@@ -5,12 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.liting.cs504</groupId>
-    <artifactId>running-location-service</artifactId>
-    <version>1.0.0.BUILD-SNAPSHOT</version>
+    <artifactId>running-information-analysis-service</artifactId>
+    <version>1.00.BUILD-SNAPSHOT</version>
 
-    <!--adci service init running location data-->
-    <name>running-location-service</name>
-    <description>Running Application Project</description>
+    <name>running-information-analysis-service</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -28,22 +26,30 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-rest</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-rest-hal-browser</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.12</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-rest-hal-browser</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
