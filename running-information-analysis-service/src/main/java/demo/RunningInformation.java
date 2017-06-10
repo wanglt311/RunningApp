@@ -1,6 +1,8 @@
 package demo;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -11,6 +13,7 @@ import java.util.Date;
 /**
  * Created by vagrant on 6/9/17.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 @Data
 @Table(name = "RUNNING_ANALYSIS")

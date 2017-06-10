@@ -1,0 +1,7 @@
+demo/RunningInformation.class
+demo/UserInfo.class
+demo/RunningInformationAnalysisServiceApplication.class
+demo/InformationRepository.class
+demo/InformationService.class
+demo/RunningInformationUploadRestController.class
+demo/InformationServiceImpl.class

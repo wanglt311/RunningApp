@@ -1,5 +1,6 @@
 package demo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Created by vagrant on 6/9/17.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 @Data
 @Embeddable
@@ -16,7 +18,7 @@ public class UserInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private final Long userId;
+    private Long userId;
     private String userName;
     private String address;
 

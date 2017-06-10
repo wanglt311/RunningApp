@@ -6,7 +6,7 @@
 
     <groupId>com.liting.cs504</groupId>
     <artifactId>running-information-analysis-service</artifactId>
-    <version>1.00.BUILD-SNAPSHOT</version>
+    <version>1.0.0.BUILD-SNAPSHOT</version>
 
     <name>running-information-analysis-service</name>
 
