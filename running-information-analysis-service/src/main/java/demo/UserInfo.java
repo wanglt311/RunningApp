@@ -5,22 +5,26 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by vagrant on 6/9/17.
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 @Embeddable
 @Table(name = "USERS")
 public class UserInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long userId;
     private String userName;
     private String address;
+
+    @OneToMany(mappedBy = "userInfo")
+    private List<RunningInformation> runningInformations;
 
     public UserInfo() {
         this.userId = null;
