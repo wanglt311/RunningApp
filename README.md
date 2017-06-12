@@ -11,6 +11,13 @@ From org.springframework.data.jpa.repository: http://docs.spring.io/spring-data/
 
 JSON.simple example – Read and write JSON:https://www.mkyong.com/java/json-simple-example-read-and-write-json/
 
+Convert objects to/from JSON by Jackson example：http://buraktas.com/convert-objects-to-from-json-by-jackson-example/
+
 Spring: return @ResponseBody “ResponseEntity<List<JSONObject>>”：https://stackoverflow.com/questions/26320106/spring-return-responsebody-responseentitylistjsonobject
 
+Spring Data JPA Tutorial: Sorting：https:/www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-part-six-sorting/
+
+docker & mysql/mysql-server：https://hub.docker.com/r/mysql/mysql-server/
+
+MySQL Docker Containers: Understanding the basics：https://severalnines.com/blog/mysql-docker-containers-understanding-basics
 
