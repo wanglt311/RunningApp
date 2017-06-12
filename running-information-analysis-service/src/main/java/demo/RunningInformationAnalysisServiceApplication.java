@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RunningInformationAnalysisServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(RunningInformationAnalysisServiceApplication.class);
+        SpringApplication.run(RunningInformationAnalysisServiceApplication.class, args);
     }
 
 }

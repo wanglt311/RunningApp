@@ -4,4 +4,5 @@ demo/RunningInformationAnalysisServiceApplication.class
 demo/InformationRepository.class
 demo/InformationService.class
 demo/RunningInformationUploadRestController.class
+demo/RunningInformation$HealthWarningLevel.class
 demo/InformationServiceImpl.class
