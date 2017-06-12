@@ -8,3 +8,5 @@ Spring Data JPA - Reference Documentation:http://docs.spring.io/spring-data/jpa/
 Spring Boot JPA Fundamental Methods：https://lufficc.com/blog/spring-boot-jpa-basic
 
 From org.springframework.data.jpa.repository: http://docs.spring.io/spring-data/data-jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html
+
+JSON.simple example – Read and write JSON:https://www.mkyong.com/java/json-simple-example-read-and-write-json/
