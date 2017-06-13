@@ -3,7 +3,6 @@ package demo.rest;
 import demo.domain.RunningInformation;
 import demo.domain.UserInfo;
 import demo.service.InformationManagementService;
-import demo.service.UserService;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -63,15 +62,20 @@ public class RunningInformationUploadRestController {
         informationManagementService.deleteByRunningId(runningId);
     }
 
-    @RequestMapping(value = "/runninginformations", method = RequestMethod.GET)
-    public Page<RunningInformation> findByHealthWarningLevel(@RequestParam(name = "page") int page,
-                                                             @RequestParam(name = "size", defaultValue = "2") int size) {
+    @RequestMapping(value = "/runninginfromations/{runningId}", method = RequestMethod.GET)
+    public List<RunningInformation> findByRunningId(@PathVariable("runningId") String runningId) {
+        return informationManagementService.findByRunningId(runningId);
+    }
+
+    @RequestMapping(value = "/runninginformations/sortedWithHealthWarningLevel", method = RequestMethod.GET)
+    public Page<RunningInformation> findAllRunningInfo(@RequestParam(name = "page") int page,
+                                                       @RequestParam(name = "size", defaultValue = "2") int size) {
         Sort sort = new Sort(Sort.Direction.DESC, "healthWarningLevel");
         return informationManagementService.findAll(new PageRequest(page, 2, sort));
     }
 
-    @RequestMapping(value = "runninginformations/returnSpecificFormat", method = RequestMethod.GET)
     //get entity in Json
+    @RequestMapping(value = "/runninginformations", method = RequestMethod.GET)
     public @ResponseBody
     ResponseEntity<List<JSONObject>> findAll(@RequestParam(name = "page") int page,
                                              @RequestParam(name = "size", defaultValue = "2") int size) {

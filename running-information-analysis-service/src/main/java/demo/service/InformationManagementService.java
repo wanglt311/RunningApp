@@ -21,7 +21,7 @@ public interface InformationManagementService {
 
     Page<RunningInformation> findAll(Pageable pageable);
 
-    //Page<RunningInformation> findByHealthWarningLevel(String healthWarningLevel, cPageable pageable);
+    //Page<RunningInformation> findByHealthWarningLevel(String healthWarningLevel, Pageable pageable);
 
     List<RunningInformation> findByRunningId(String runningId);
 }
