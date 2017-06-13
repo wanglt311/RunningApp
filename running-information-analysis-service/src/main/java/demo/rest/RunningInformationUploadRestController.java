@@ -86,7 +86,7 @@ public class RunningInformationUploadRestController {
             userInfo.put(heartRate, i.getHeartRate());
             userInfo.put(userId, i.getUserId());
             userInfo.put(userName, i.getUserName());
-            userInfo.put(userAddress, i.getUserAdress());
+            userInfo.put(userAddress, i.getAddress());
             userInfo.put(healthWarningLevel, i.getHealthWarningLevel());
             results.add(userInfo);
         }

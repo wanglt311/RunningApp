@@ -15,12 +15,13 @@ import java.util.List;
  */
 @RepositoryRestResource(path = "RUNNING_ANALYSIS")
 public interface InformationRepository extends JpaRepository<RunningInformation, Long>{
+
     @RestResource(path = "informations")
     Page<RunningInformation> findAll(Pageable pageable);
 
-    @RestResource(path = "healthWarningLevels")
-    Page<RunningInformation> findByHealthWarningLevel(@Param("healthWarningLevel") RunningInformation.HealthWarningLevel healthWarningLevel,
-                                                      Pageable pageable);
+//    @RestResource(path = "healthWarningLevels")
+//    Page<RunningInformation> findByHealthWarningLevel(@Param("healthWarningLevel") RunningInformation.HealthWarningLevel healthWarningLevel,
+//                                                      Pageable pageable);
 
     void deleteByRunningId(@Param("runningId") String runningId);
 

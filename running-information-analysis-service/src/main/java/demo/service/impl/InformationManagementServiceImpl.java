@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,11 @@ import java.util.List;
  * Created by vagrant on 6/10/17.
  */
 @Service
+@Transactional
 public class InformationManagementServiceImpl implements InformationManagementService {
+    @Autowired
     private InformationRepository informationRepository;
+    @Autowired
     private UserInfoRepository userInfoRepository;
 
     @Autowired
@@ -44,8 +48,7 @@ public class InformationManagementServiceImpl implements InformationManagementSe
 
     @Override
     public void deleteByRunningId(String runningId) {
-        List<RunningInformation> runningInformationList = new ArrayList<RunningInformation>();
-        runningInformationList = findByRunningId(runningId);
+        List<RunningInformation> runningInformationList = informationRepository.findByRunningId(runningId);
         for (RunningInformation withRunningId : runningInformationList) {
             informationRepository.delete(withRunningId);
         }

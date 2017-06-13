@@ -1,6 +1,7 @@
 package demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -12,7 +13,7 @@ import java.util.Random;
 /**
  * Created by vagrant on 6/9/17.
  */
-//@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 @Data
 @Table(name = "RUNNING_ANALYSIS")
@@ -31,12 +32,12 @@ public class RunningInformation implements Serializable{
 //            @AttributeOverride(name = "address", column = @Column(name = "address"))
 //    })
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "user_id"),
-            @JoinColumn(name = "user_name"),
-            @JoinColumn(name = "user_address")
-    })
-    //@JoinColumn(name = "user_id")
+//    @JoinColumns({
+//            @JoinColumn(name = "user_id"),
+//            @JoinColumn(name = "user_name"),
+//            @JoinColumn(name = "user_address")
+//    })
+    @JoinColumn(name = "user_id")
     private UserInfo userInfo;
 
     private double latitude;
@@ -91,11 +92,11 @@ public class RunningInformation implements Serializable{
     }
 
     public String getUserName() {
-        return this.userInfo == null ? null : this.getUserName();
+        return this.userInfo == null ? null : this.userInfo.getUserName();
     }
 
-    public String getUserAdress() {
-        return this.userInfo == null ? null : this.getUserAdress();
+    public String getAddress() {
+        return this.userInfo == null ? null : this.userInfo.getAddress();
     }
 
     public static int generateRandom(int max, int min) {

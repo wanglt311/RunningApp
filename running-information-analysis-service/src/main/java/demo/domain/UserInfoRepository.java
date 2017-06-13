@@ -14,6 +14,7 @@ import java.util.List;
  */
 @RepositoryRestResource(path = "USERS")
 public interface UserInfoRepository extends JpaRepository<UserInfo, Long> {
+
     @RestResource(path = "users")
     Page<UserInfo> findAll(Pageable pageable);
 

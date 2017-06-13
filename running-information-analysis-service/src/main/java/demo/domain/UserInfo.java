@@ -24,9 +24,12 @@ import java.util.List;
 public class UserInfo {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private Long userId;
+    @Column(name = "user_name")
     private String userName;
+    @Column(name = "user_address")
     private String address;
 
     @OneToMany(mappedBy = "userInfo")
