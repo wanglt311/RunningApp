@@ -1,6 +1,5 @@
 demo/domain/UserInfo.class
 demo/rest/UserInfoUploadRestController.class
-demo/domain/DisplayedRunningInfo.class
 demo/RunningInformationAnalysisServiceApplication.class
 demo/domain/InformationRepository.class
 demo/service/UserService.class
