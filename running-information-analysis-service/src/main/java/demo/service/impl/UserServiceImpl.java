@@ -21,8 +21,5 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(UserInfoRepository userInfoRepository) {
         this.userInfoRepository = userInfoRepository;
     }
-    @Override
-    public List<UserInfo> saveUserInfo(List<UserInfo> userInfos) {
-        return userInfoRepository.save(userInfos);
-    }
+
 }

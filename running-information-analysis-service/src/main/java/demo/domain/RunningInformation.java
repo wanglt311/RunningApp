@@ -31,12 +31,12 @@ public class RunningInformation implements Serializable{
 //            @AttributeOverride(name = "address", column = @Column(name = "address"))
 //    })
     @ManyToOne(fetch=FetchType.LAZY)
-//    @JoinColumns({
-//            @JoinColumn(name = "user_id"),
-//            @JoinColumn(name = "user_name"),
-//            @JoinColumn(name = "user_address")
-//    })
-    @JoinColumn(name = "user_id")
+    @JoinColumns({
+            @JoinColumn(name = "user_id"),
+            @JoinColumn(name = "user_name"),
+            @JoinColumn(name = "user_address")
+    })
+    //@JoinColumn(name = "user_id")
     private UserInfo userInfo;
 
     private double latitude;

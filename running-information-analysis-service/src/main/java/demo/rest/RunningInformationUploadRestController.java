@@ -1,7 +1,9 @@
 package demo.rest;
 
 import demo.domain.RunningInformation;
-import demo.service.InformationService;
+import demo.domain.UserInfo;
+import demo.service.InformationManagementService;
+import demo.service.UserService;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,7 +21,8 @@ import java.util.List;
  */
 @RestController
 public class RunningInformationUploadRestController {
-    private InformationService informationService;
+    private InformationManagementService informationManagementService;
+    //private UserService userService;
 
     private String runningId = "runningId";
     private String totalRunningTime = "totalRunningTime";
@@ -30,39 +33,50 @@ public class RunningInformationUploadRestController {
     private String healthWarningLevel = "healthWarningLevel";
 
     @Autowired
-    public RunningInformationUploadRestController(InformationService informationService) {
-        this.informationService = informationService;
+    public RunningInformationUploadRestController(InformationManagementService informationManagementService) {
+        this.informationManagementService = informationManagementService;
     }
+
+//    @RequestMapping(value = "/userinformations", method = RequestMethod.POST)
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void upload(@RequestBody List<UserInfo> userInfos) {
+//        this.informationManagementService.saveUserInfo(userInfos);
+//    }
+
 
     @RequestMapping(value = "/runninginformations", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void upload(@RequestBody List<RunningInformation> runningInformations) {
-        this.informationService.saveRunningInformation(runningInformations);
+    //@RequestBody switch json data into Java class
+    public void upload(@RequestBody List<RunningInformation> runningInformations,
+                       @RequestBody List<UserInfo> userInfos) {
+        this.informationManagementService.saveRunningInformation(runningInformations);
+        this.informationManagementService.saveUserInfo(userInfos);
     }
 
     @RequestMapping(value = "/runninginformations", method = RequestMethod.DELETE)
     public void purge() {
-        this.informationService.deleteAll();
+        this.informationManagementService.deleteAll();
     }
 
     @RequestMapping(value = "/runninginformations/{runningId}", method = RequestMethod.DELETE)
     public void deleteByRunningId(@PathVariable("runningId") String runningId) {
-        informationService.deleteByRunningId(runningId);
+        informationManagementService.deleteByRunningId(runningId);
     }
 
     @RequestMapping(value = "/runninginformations", method = RequestMethod.GET)
     public Page<RunningInformation> findByHealthWarningLevel(@RequestParam(name = "page") int page,
                                                              @RequestParam(name = "size", defaultValue = "2") int size) {
         Sort sort = new Sort(Sort.Direction.DESC, "healthWarningLevel");
-        return informationService.findAll(new PageRequest(page, 2, sort));
+        return informationManagementService.findAll(new PageRequest(page, 2, sort));
     }
 
-    @RequestMapping(value = "runninginformations/returnAll", method = RequestMethod.GET)
+    @RequestMapping(value = "runninginformations/returnSpecificFormat", method = RequestMethod.GET)
+    //get entity in Json
     public @ResponseBody
     ResponseEntity<List<JSONObject>> findAll(@RequestParam(name = "page") int page,
                                              @RequestParam(name = "size", defaultValue = "2") int size) {
         Sort sort = new Sort(Sort.Direction.DESC, "healthWarningLevel");
-        Page<RunningInformation> resultsPages = informationService.findAll(new PageRequest(page, 2, sort));
+        Page<RunningInformation> resultsPages = informationManagementService.findAll(new PageRequest(page, 2, sort));
         List<RunningInformation> list = resultsPages.getContent();
         List<JSONObject> results = new ArrayList<JSONObject>();
         for (RunningInformation i : list) {
@@ -78,6 +92,9 @@ public class RunningInformationUploadRestController {
         }
         return new ResponseEntity<List<JSONObject>>(results, HttpStatus.OK);
     }
+
+
+
     //test method
 //    @RequestMapping("/greet")
 //    public String sayHello(@RequestParam("name") String name) {

@@ -2,7 +2,6 @@ package demo.rest;
 
 import demo.domain.RunningInformation;
 import demo.domain.UserInfo;
-import demo.service.InformationService;
 import demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,10 +21,10 @@ public class UserInfoUploadRestController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/userinformations", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
-    public void upload(@RequestBody List<UserInfo> userInfos) {
-        this.userService.saveUserInfo(userInfos);
-    }
+//    @RequestMapping(value = "/userinformations", method = RequestMethod.POST)
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void upload(@RequestBody List<UserInfo> userInfos) {
+//        this.userService.saveUserInfo(userInfos);
+//    }
 
 }

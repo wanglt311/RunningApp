@@ -11,7 +11,7 @@ import java.util.List;
  * Created by vagrant on 6/11/17.
  */
 public interface UserService {
-    List<UserInfo> saveUserInfo(List<UserInfo> userInfos);
+
 
 //    void deleteAll();
 //

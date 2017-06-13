@@ -1,6 +1,7 @@
 package demo.service;
 
 import demo.domain.RunningInformation;
+import demo.domain.UserInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -9,8 +10,10 @@ import java.util.List;
 /**
  * Created by vagrant on 6/10/17.
  */
-public interface InformationService {
+public interface InformationManagementService {
     List<RunningInformation> saveRunningInformation(List<RunningInformation> runningInformations);
+
+    List<UserInfo> saveUserInfo(List<UserInfo> userInfos);
 
     void deleteAll();
 
@@ -18,8 +21,7 @@ public interface InformationService {
 
     Page<RunningInformation> findAll(Pageable pageable);
 
-    Page<RunningInformation> findByHealthWarningLevel(String healthWarningLevel,
-                                                      Pageable pageable);
+    //Page<RunningInformation> findByHealthWarningLevel(String healthWarningLevel, cPageable pageable);
 
     List<RunningInformation> findByRunningId(String runningId);
 }
