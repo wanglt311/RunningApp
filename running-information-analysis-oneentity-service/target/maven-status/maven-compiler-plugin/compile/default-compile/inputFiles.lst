@@ -1,7 +1,0 @@
-/home/vagrant/workspace/RunningApp/running-information-analysis-oneentity-service/src/main/java/RunningInformationAnalysisOneentityServiceApplication.java
-/home/vagrant/workspace/RunningApp/running-information-analysis-oneentity-service/src/main/java/domain/RunningInfo.java
-/home/vagrant/workspace/RunningApp/running-information-analysis-oneentity-service/src/main/java/service/impl/RunningInfoServiceImpl.java
-/home/vagrant/workspace/RunningApp/running-information-analysis-oneentity-service/src/main/java/domain/UserInfo.java
-/home/vagrant/workspace/RunningApp/running-information-analysis-oneentity-service/src/main/java/rest/RunningInfoAnalysisRestController.java
-/home/vagrant/workspace/RunningApp/running-information-analysis-oneentity-service/src/main/java/service/RunningInfoService.java
-/home/vagrant/workspace/RunningApp/running-information-analysis-oneentity-service/src/main/java/domain/RunningInfoRepository.java
