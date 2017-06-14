@@ -1,0 +1,8 @@
+domain/RunningInfo$HealthWarningLevel.class
+RunningInformationAnalysisOneentityServiceApplication.class
+service/impl/RunningInfoServiceImpl.class
+domain/RunningInfo.class
+rest/RunningInfoAnalysisRestController.class
+domain/UserInfo.class
+service/RunningInfoService.class
+domain/RunningInfoRepository.class

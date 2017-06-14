@@ -17,7 +17,7 @@ import java.util.Random;
 @Entity
 @Data
 @Table(name = "RUNNING_ANALYSIS")
-public class RunningInformation implements Serializable{
+public class RunningInformation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -66,25 +66,25 @@ public class RunningInformation implements Serializable{
     //@JsonProperty annotation is used to bind data by a given name
     @JsonCreator
     public RunningInformation(@JsonProperty("runningId") String runningId,
-                              @JsonProperty("latitude") double latitude,
-                              @JsonProperty("longitude") double longitude,
-                              @JsonProperty("runningDistance") double runningDistance,
-                              @JsonProperty("totalRunningTime") double totalRunningTime,
-                              @JsonProperty("heartRate") int heartRate,
-                              @JsonProperty("timestamp") Date timestamp,
+                              @JsonProperty("latitude") String latitude,
+                              @JsonProperty("longitude") String longitude,
+                              @JsonProperty("runningDistance") String runningDistance,
+                              @JsonProperty("totalRunningTime") String totalRunningTime,
+                              @JsonProperty("heartRate") String heartRate,
+                              @JsonProperty("timestamp") String timestamp,
                               //@JsonProperty("userId") Long userId,
                               @JsonProperty("userInfo") UserInfo userInfo,
                               HealthWarningLevel healthWarningLevel) {
         this.runningId = runningId;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.runningDistance = runningDistance;
-        this.totalRunningTime = totalRunningTime;
+        this.latitude = Double.parseDouble(latitude);
+        this.longitude = Double.parseDouble(longitude);
+        this.runningDistance = Double.parseDouble(runningDistance);
+        this.totalRunningTime = Double.parseDouble(totalRunningTime);
         this.heartRate = generateRandom(200, 60);
-        this.timestamp = timestamp;
+        this.timestamp = new Date();
         //this.userInfo = new UserInfo(userId);
         this.userInfo = userInfo;
-        this.healthWarningLevel = returnHealthWarningLevel(heartRate);
+        this.healthWarningLevel = returnHealthWarningLevel(Integer.parseInt(heartRate));
     }
 
     public Long getUserId() {

@@ -23,14 +23,6 @@ public class RunningInformationUploadRestController {
     private InformationManagementService informationManagementService;
     //private UserService userService;
 
-    private String runningId = "runningId";
-    private String totalRunningTime = "totalRunningTime";
-    private String heartRate = "heartRate";
-    private String userId = "userId";
-    private String userName = "userName";
-    private String userAddress = "userAddress";
-    private String healthWarningLevel = "healthWarningLevel";
-
     @Autowired
     public RunningInformationUploadRestController(InformationManagementService informationManagementService) {
         this.informationManagementService = informationManagementService;
@@ -85,13 +77,13 @@ public class RunningInformationUploadRestController {
         List<JSONObject> results = new ArrayList<JSONObject>();
         for (RunningInformation i : list) {
             JSONObject userInfo = new JSONObject();
-            userInfo.put(runningId, i.getRunningId());
-            userInfo.put(totalRunningTime, i.getTotalRunningTime());
-            userInfo.put(heartRate, i.getHeartRate());
-            userInfo.put(userId, i.getUserId());
-            userInfo.put(userName, i.getUserName());
-            userInfo.put(userAddress, i.getAddress());
-            userInfo.put(healthWarningLevel, i.getHealthWarningLevel());
+            userInfo.put("runningId", i.getRunningId());
+            userInfo.put("totalRunningTime", i.getTotalRunningTime());
+            userInfo.put("heartRate", i.getHeartRate());
+            userInfo.put("userId", i.getUserId());
+            userInfo.put("userName", i.getUserName());
+            userInfo.put("userAddress", i.getAddress());
+            userInfo.put("healthWarningLevel", i.getHealthWarningLevel());
             results.add(userInfo);
         }
         return new ResponseEntity<List<JSONObject>>(results, HttpStatus.OK);
