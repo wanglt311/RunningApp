@@ -27,11 +27,18 @@ public class RunningInfoAnalysisRestController {
         this.runningInfoService = runningInfoService;
     }
 
-    @RequestMapping(value = "/runningInfos", method = RequestMethod.POST)
+    @RequestMapping(value = "/bulk/runningInfos", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void upload(@RequestBody List<RunningInfo> runningInfoList) {
         this.runningInfoService.saveRunningInfo(runningInfoList);
     }
+
+//    @RequestMapping(value = "/bulk/runningInfos", method = RequestMethod.POST)
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public @ResponseBody String upload(@RequestParam List<RunningInfo> runningInfoList) {
+//        this.runningInfoService.saveRunningInfo(runningInfoList);
+//        return "Saved";
+//    }
 
     @RequestMapping(value = "/runningInfos", method = RequestMethod.DELETE)
     public void purge() {
@@ -40,10 +47,10 @@ public class RunningInfoAnalysisRestController {
 
     @RequestMapping(value = "/runningInfos/{runningId}", method = RequestMethod.DELETE)
     public void deleteByRunningId(@PathVariable("runningId") String runningId) {
-        runningInfoService.deleteByRunningId(runningId);
+        this.runningInfoService.deleteByRunningId(runningId);
     }
 
-    @RequestMapping(value = "/runningInfos", method = RequestMethod.GET)
+    @RequestMapping(value = "/runningInfos/allInfo", method = RequestMethod.GET)
     public @ResponseBody
     ResponseEntity<List<JSONObject>> findAll(@RequestParam(name = "page") int page,
                                              @RequestParam(name = "size", defaultValue = "2") int size) {
@@ -56,7 +63,7 @@ public class RunningInfoAnalysisRestController {
             jsonObject.put("runningId", item.getRunningId());
             jsonObject.put("totalRunningTime", item.getTotalRunningTime());
             jsonObject.put("heartRate", item.getHeartRate());
-            jsonObject.put("userId", item.getUserId());
+            jsonObject.put("userId", item.getId());
             jsonObject.put("userName", item.getUserName());
             jsonObject.put("userAddress", item.getAddress());
             jsonObject.put("healthWarningLevel", item.getHealthWarningLevel());
@@ -69,14 +76,22 @@ public class RunningInfoAnalysisRestController {
     public Page<RunningInfo> findAllInfo(@RequestParam(name = "page") int page,
                                          @RequestParam(name = "size", defaultValue = "2") int size) {
         Sort sort = new Sort(Sort.Direction.DESC, "healthWarningLevel");
-        return runningInfoService.findAll(new PageRequest(page, 2, sort));
+        return this.runningInfoService.findAll(new PageRequest(page, 2, sort));
     }
 
     @RequestMapping(value = "/runningInfos/{runningId}", method = RequestMethod.GET)
     public Page<RunningInfo> findByRunningId(@PathVariable("runningId") String runningId,
                                              @RequestParam(name = "page") int page,
                                              @RequestParam(name = "size") int size) {
-        return runningInfoService.findByRunningId(runningId, new PageRequest(page, size));
+        return this.runningInfoService.findByRunningId(runningId, new PageRequest(page, size));
     }
+
+//    @RequestMapping("/greet")
+//    public String sayHello(@RequestParam("name") String name) {
+//        if (name == null || name.isEmpty()) {
+//            throw new IllegalArgumentException("The 'name' parameter must not be null or empty");
+//        }
+//        return String.format("Hello %s!", name);
+//    }
 
 }

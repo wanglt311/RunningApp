@@ -15,29 +15,29 @@ import java.util.List;
 @Data
 @Embeddable
 public class UserInfo {
-    private Long userId;
-    private String userName;
+    //private Long userId;
+    private String username;
     private String address;
 
     public UserInfo() {
-        this.userId = null;
-    }
 
-    public UserInfo(Long userId) {
-
-        this.userId = userId;
     }
+//
+//    public UserInfo(Long userId) {
+//
+//        this.userId = userId;
+//    }
 
-    public UserInfo(Long userId, String userName, String address) {
-        this.userId = userId;
-        this.userName = userName;
-        this.address = address;
-    }
+//    public UserInfo(Long userId, String userName, String address) {
+//        this.userId = userId;
+//        this.userName = userName;
+//        this.address = address;
+//    }
 
     @JsonCreator
-    public UserInfo(@JsonProperty("username") String userName,
+    public UserInfo(@JsonProperty("username") String username,
                     @JsonProperty("address") String address) {
-        this.userName = userName;
+        this.username = username;
         this.address = address;
     }
 }

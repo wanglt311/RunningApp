@@ -1,8 +1,8 @@
-RunningInformationAnalysisOneServiceApplication.class
-domain/RunningInfo$HealthWarningLevel.class
-service/impl/RunningInfoServiceImpl.class
-domain/RunningInfo.class
-rest/RunningInfoAnalysisRestController.class
-domain/UserInfo.class
-service/RunningInfoService.class
-domain/RunningInfoRepository.class
+demo/domain/UserInfo.class
+demo/RunningInformationAnalysisOneServiceApplication.class
+demo/service/impl/RunningInfoServiceImpl.class
+demo/domain/RunningInfoRepository.class
+demo/rest/RunningInfoAnalysisRestController.class
+demo/domain/RunningInfo$HealthWarningLevel.class
+demo/service/RunningInfoService.class
+demo/domain/RunningInfo.class

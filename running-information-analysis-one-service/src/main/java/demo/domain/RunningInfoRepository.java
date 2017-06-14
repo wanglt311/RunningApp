@@ -14,15 +14,15 @@ import java.util.List;
  */
 //@RepositoryRestResource(path = "RUNNING_ANALYSIS")
 public interface RunningInfoRepository extends JpaRepository<RunningInfo, Long> {
-    @RestResource(path = "informations")
+    //@RestResource(path = "informations")
     Page<RunningInfo> findAll(Pageable pageable);
 
     void deleteByRunningId(@Param("runningId") String runningId);
 
-    @RestResource(path = "runningId")
+    //@RestResource(path = "runningId")
     Page<RunningInfo> findByRunningId(@Param("runningId") String runningId, Pageable pageable);
 
-    @RestResource(path = "runningIdNoPage")
+    //@RestResource(path = "runningIdNoPage")
     List<RunningInfo> findByRunningId(@Param("runningId") String runningId);
 
 }

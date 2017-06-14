@@ -12,20 +12,20 @@ import java.util.Random;
 /**
  * Created by vagrant on 6/13/17.
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Entity
 @Data
 @Table(name = "RUNNING_ANALYSIS")
 public class RunningInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
 
     private String runningId;
 
     @Embedded
 //    @AttributeOverrides({
-//            @AttributeOverride(name = "userid", column = @Column(name = "user_id")),
+//            //@AttributeOverride(name = "userid", column = @Column(name = "user_id")),
 //            @AttributeOverride(name = "username", column = @Column(name = "user_name")),
 //            @AttributeOverride(name = "address", column = @Column(name = "address"))
 //    })
@@ -51,6 +51,9 @@ public class RunningInfo {
     public RunningInfo(UserInfo userInfo) {
         this.userInfo = userInfo;
     }
+    public RunningInfo(String username, String address) {
+        this.userInfo = new UserInfo(username, address);
+    }
 
     //used for constructors or static factory methods to construct
     //instances from Json
@@ -63,9 +66,7 @@ public class RunningInfo {
                        @JsonProperty("totalRunningTime") String totalRunningTime,
                        @JsonProperty("heartRate") String heartRate,
                        @JsonProperty("timestamp") String timestamp,
-                       //@JsonProperty("userId") Long userId,
-                       @JsonProperty("userInfo") UserInfo userInfo,
-                       HealthWarningLevel healthWarningLevel) {
+                       @JsonProperty("userInfo") UserInfo userInfo) {
         this.runningId = runningId;
         this.latitude = Double.parseDouble(latitude);
         this.longitude = Double.parseDouble(longitude);
@@ -75,15 +76,15 @@ public class RunningInfo {
         this.timestamp = new Date();
         //this.userInfo = new UserInfo(userId);
         this.userInfo = userInfo;
-        this.healthWarningLevel = returnHealthWarningLevel(Integer.parseInt(heartRate));
+        this.healthWarningLevel = returnHealthWarningLevel(this.heartRate);
     }
 
-    public Long getUserId() {
-        return this.userInfo == null ? null : this.userInfo.getUserId();
-    }
+//    public Long getUserId() {
+//        return this.userInfo == null ? null : this.userInfo.getUserId();
+//    }
 
     public String getUserName() {
-        return this.userInfo == null ? null : this.userInfo.getUserName();
+        return this.userInfo == null ? null : this.userInfo.getUsername();
     }
 
     public String getAddress() {
