@@ -1,6 +1,6 @@
 Running Steps:
 
-1.Download project running-information-analysis-one-ser
+1.Download project running-information-analysis-one-service
 
 2.Enter project:
 running-information-analysis-one-service
