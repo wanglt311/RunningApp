@@ -10,6 +10,7 @@ in terminal, run : docker-compose up -d
 
 or directly run mysql:
 mysql --host=127.0.0.1 --port=3306 --user=root --password=root
+
 create database：db_running_information_analysis
 
 4.Generate fatjar file:
