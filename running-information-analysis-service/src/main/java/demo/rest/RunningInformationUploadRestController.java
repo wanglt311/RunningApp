@@ -67,7 +67,7 @@ public class RunningInformationUploadRestController {
     }
 
     //get entity in Json
-    @RequestMapping(value = "/runninginformations", method = RequestMethod.GET)
+    @RequestMapping(value = "/runninginformations/allInfo", method = RequestMethod.GET)
     public @ResponseBody
     ResponseEntity<List<JSONObject>> findAll(@RequestParam(name = "page") int page,
                                              @RequestParam(name = "size", defaultValue = "2") int size) {

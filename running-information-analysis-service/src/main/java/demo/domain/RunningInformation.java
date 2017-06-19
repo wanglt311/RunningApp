@@ -20,7 +20,7 @@ import java.util.Random;
 public class RunningInformation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
 
     private String runningId;
@@ -32,11 +32,6 @@ public class RunningInformation {
 //            @AttributeOverride(name = "address", column = @Column(name = "address"))
 //    })
     @ManyToOne(fetch=FetchType.LAZY)
-//    @JoinColumns({
-//            @JoinColumn(name = "user_id"),
-//            @JoinColumn(name = "user_name"),
-//            @JoinColumn(name = "user_address")
-//    })
     @JoinColumn(name = "user_id")
     private UserInfo userInfo;
 
@@ -60,6 +55,9 @@ public class RunningInformation {
     public RunningInformation(UserInfo userInfo) {
         this.userInfo = userInfo;
     }
+    public RunningInformation(String username, String address) {
+        this.userInfo = new UserInfo(username, address);
+    }
 
     //used for constructors or static factory methods to construct
     //instances from Json
@@ -73,8 +71,7 @@ public class RunningInformation {
                               @JsonProperty("heartRate") String heartRate,
                               @JsonProperty("timestamp") String timestamp,
                               //@JsonProperty("userId") Long userId,
-                              @JsonProperty("userInfo") UserInfo userInfo,
-                              HealthWarningLevel healthWarningLevel) {
+                              @JsonProperty("userInfo") UserInfo userInfo) {
         this.runningId = runningId;
         this.latitude = Double.parseDouble(latitude);
         this.longitude = Double.parseDouble(longitude);
@@ -92,7 +89,7 @@ public class RunningInformation {
     }
 
     public String getUserName() {
-        return this.userInfo == null ? null : this.userInfo.getUserName();
+        return this.userInfo == null ? null : this.userInfo.getUsername();
     }
 
     public String getAddress() {

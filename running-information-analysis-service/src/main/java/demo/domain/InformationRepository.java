@@ -16,7 +16,7 @@ import java.util.List;
 @RepositoryRestResource(path = "RUNNING_ANALYSIS")
 public interface InformationRepository extends JpaRepository<RunningInformation, Long>{
 
-    @RestResource(path = "informations")
+    //@RestResource(path = "informations")
     Page<RunningInformation> findAll(Pageable pageable);
 
 //    @RestResource(path = "healthWarningLevels")
@@ -25,6 +25,6 @@ public interface InformationRepository extends JpaRepository<RunningInformation,
 
     void deleteByRunningId(@Param("runningId") String runningId);
 
-    @RestResource(path = "runningId")
+    //@RestResource(path = "runningId")
     List<RunningInformation> findByRunningId(@Param("runningId") String runningId);
 }

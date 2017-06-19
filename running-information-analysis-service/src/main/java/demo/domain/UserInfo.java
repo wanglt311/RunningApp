@@ -1,6 +1,7 @@
 package demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import demo.domain.RunningInformation;
@@ -16,20 +17,13 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 //@Embeddable
-@Table(name = "USERS", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "user_id"),
-        @UniqueConstraint(columnNames = "user_name"),
-        @UniqueConstraint(columnNames = "user_address")
-})
+@Table(name = "USERS")
 public class UserInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+    @GeneratedValue
     private Long userId;
-    @Column(name = "user_name")
-    private String userName;
-    @Column(name = "user_address")
+    private String username;
     private String address;
 
     @OneToMany(mappedBy = "userInfo")
@@ -44,16 +38,16 @@ public class UserInfo {
         this.userId = userId;
     }
 
-    public UserInfo(Long userId, String userName, String address) {
+    public UserInfo(Long userId, String username, String address) {
         this.userId = userId;
-        this.userName = userName;
+        this.username = username;
         this.address = address;
     }
 
     @JsonCreator
-    public UserInfo(@JsonProperty("username") String userName,
+    public UserInfo(@JsonProperty("username") String username,
                     @JsonProperty("address") String address) {
-        this.userName = userName;
+        this.username = username;
         this.address = address;
     }
 }
