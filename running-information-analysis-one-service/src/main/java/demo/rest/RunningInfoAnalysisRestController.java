@@ -72,7 +72,7 @@ public class RunningInfoAnalysisRestController {
         return new ResponseEntity<List<JSONObject>>(jsonObjects, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/runningInfos/sortedWithHealthWarningLevel", method = RequestMethod.GET)
+    @RequestMapping(value = "/runningInfos", method = RequestMethod.GET)
     public Page<RunningInfo> findAllInfo(@RequestParam(name = "page") int page,
                                          @RequestParam(name = "size", defaultValue = "2") int size) {
         Sort sort = new Sort(Sort.Direction.DESC, "healthWarningLevel");
